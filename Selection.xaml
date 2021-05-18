@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App3"
+             x:Class="App3.Selection"
+             Title="Page 2">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ConverterBase64ImageSource x:Key="Base64ToImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        
+        <ScrollView>
+            
+            <Grid HorizontalOptions="Start"
+              Margin="5"
+			  Padding="5">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    
+                </Grid.ColumnDefinitions>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="120"/>
+                   
+                 
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="120"/>
+                 <!--   
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="120"/>
+                 --> 
+                    
+                </Grid.RowDefinitions>
+
+                                                                                                                        <!-- -->
+                <Label Text="Selection.                                                                                         "
+                        VerticalOptions="End"/>
+                <RelativeLayout Grid.Row="1" 
+							HeightRequest="100"
+							VerticalOptions="Start">
+                    <ListView x:Name ="listView" Rotation="270"  RowHeight="100" SeparatorVisibility="None" 
+                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-50}"
+                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=50}"
+                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=100}"
+                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                              CachingStrategy="RecycleElement" ItemSelected= "ListItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ContentView  Rotation="90" BackgroundColor="Transparent">
+                                        <StackLayout HeightRequest="100"
+												 WidthRequest="100">
+                                            <Image  x:Name="listViewImage"
+                                                    Source="{Binding Picture, Converter={StaticResource Base64ToImageConverter}}" />  
+                                            
+                                            <Label x:Name="listViewLabel"
+                                                Text="{Binding FoodName}"
+										   HorizontalTextAlignment="Center"
+                                           LineBreakMode="MiddleTruncation"/>
+                                        </StackLayout>
+                                    </ContentView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
+                </RelativeLayout>
+                
+                <RelativeLayout Grid.Row="3" VerticalOptions="EndAndExpand" >
+                    <Label Text=" More Details." HorizontalOptions="StartAndExpand"
+                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, Property=Width, Factor=0.5, Constant=-50}"
+                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, Property=Width, Factor=-0.5, Constant=50}"
+                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=100}"
+                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, Property=Width, Factor=1}"/>
+
+                    <Image x:Name="DetailedPicture"
+                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-50}"
+                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=50}"
+                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=100}"
+                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
+                    
+                    <Label Text="Name of Dish:" 
+                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-180}"
+                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=300}"
+                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Constant=100}"
+                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
+                    <Label x:Name="FoodNameLabel"
+                              Text="FoodNameLabel"
+                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-90}"
+                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=300}"
+                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=100}"
+                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
+                    
+                    <Label Text="Price:"
+                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-180}"
+                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=350}"
+                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=100}"
+                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
+
+                    <Label x:Name="DetailPriceLabel"
+                              
+                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-90}"
+                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=350}"
+                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=100}"
+                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"/>
+                    <!--BindingContext="{Binding Source={x:Reference listViewLabel}}" Text="{Binding Source={x:Reference ListItemSelected}}"  Source="icon.png"-->
+                    
+                    <Button Text="Go" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Clicked="OnButtonClickedPage2" 
+                              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, Property=Width, Factor=0.5, Constant=-50}"
+                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, Property=Width, Factor=-0.5, Constant=50}"
+                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=100}"
+                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, Property=Width, Factor=1}"></Button>
+                    <!--
+                    <Image BindingContext="{x:Reference listSelected}"
+                           Image ="{Binding Value}"></Image>
+                    <Label BindingContext="{x:Reference listSelected}"
+                           Text="{binding Value}"></Label>
+                    -->
+                </RelativeLayout>
+            </Grid>            
+        </ScrollView>
+    </ContentPage.Content> 
+</ContentPage>

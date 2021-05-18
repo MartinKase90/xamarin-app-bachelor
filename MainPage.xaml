@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App3"
+             x:Class="App3.MainPage"
+             Title="Page 1">
+
+	<!--Label Text="Welcome to Xamarin.Forms!" 
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" /-->
+    <StackLayout Spacing="10">
+        <Label 
+            Text="Define Filter" 
+            HorizontalOptions="Start" 
+            Font=" 15">
+
+
+        </Label>
+        <Picker Title="Select Meat" SelectedIndexChanged="OnMeatPickerSelectedIndexChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Beef</x:String>
+                    <x:String>Bison</x:String>
+                    <x:String>Calf</x:String>
+                    <x:String>Goat/Sheep</x:String>
+                    <x:String>Lamb</x:String>
+                    <x:String>Moose</x:String>
+                    <x:String>Mutton</x:String>
+                    <x:String>Pork</x:String>
+                    <x:String>Rabbit</x:String>
+                    <x:String>Veal</x:String>
+                    <x:String>Venison</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Picker Title="Poultry" SelectedIndexChanged="OnPoultryPickerSelectedIndexChanged" >
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Chicken</x:String>
+                    <x:String>Duck</x:String>
+                    <x:String>Goose</x:String>
+                    <x:String>Ostrich</x:String>
+                    <x:String>Pheasant</x:String>
+                    <x:String>Turkey</x:String>                    
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Picker Title="Seafood" SelectedIndexChanged="OnSeafoodPickerSelectedIndexChanged" >
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Atlantic mackerel</x:String>
+                    <x:String>Atlantic salmon</x:String>
+                    <x:String>Cod</x:String>
+                    <x:String>Crab</x:String>
+                    <x:String>Haddock</x:String>
+                    <x:String>Sea bass</x:String>
+                    <x:String>Shrimp</x:String>
+                    <x:String>Lobster</x:String>
+                    
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Picker Title="Vegan" SelectedIndexChanged="OnVeganPickerSelectedIndexChanged" >
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>TODO 1</x:String>
+                    <x:String>TODO 2</x:String>
+                    <x:String>TODO 3</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <!--
+        <Label x:Name="meatOutLabel"></Label>
+        <Label x:Name="poultryOutLabel"></Label>
+        <Label x:Name="seaFoodOutLabel"></Label>
+        <Label x:Name="veganOutLabel"></Label>
+        -->
+        <Label Text="within current city" HorizontalOptions="Start" Font=" 15"></Label>
+        <Switch VerticalOptions="Start" HorizontalOptions="StartAndExpand" IsToggled="False"></Switch>
+        <Label Text="Within radius" HorizontalOptions="StartAndExpand" Font="15"></Label>
+        <Switch VerticalOptions="Start" HorizontalOptions="StartAndExpand" IsToggled="False"></Switch>
+        <Label Text="Define radius" HorizontalOptions="StartAndExpand" Font="15"></Label>
+        <Slider x:Name="rangeSlider" VerticalOptions="Start" Maximum="10"
+                Value="{Binding Scale, Mode=TwoWay}"
+                ValueChanged="OnSliderValueChanged"></Slider>
+        <Label BindingContext="{x:Reference rangeSlider}"
+               Text="{Binding Value, StringFormat='Range = {0:F1} km'}"
+               Grid.Row="1" Grid.Column="1"
+               VerticalTextAlignment="Center" />
+        <Button Text="Go" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Clicked="OnButtonClicked"  ></Button>        
+    </StackLayout>
+
+   
+    
+</ContentPage>
